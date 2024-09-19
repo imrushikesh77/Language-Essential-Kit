@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Essential Kit</title>
+    <link rel="shortcut icon" href="./assets/travel.png" type="image/x-icon">
+    <!-- Include Select2 CSS from CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Enter following details for your language essential kit!!</h2>
+
+        <!-- Form to select language, enter city, and choose category -->
+        <form id="languageCityCategoryForm">
+            <!-- Language selection dropdown -->
+            <label for="languageSelect">Select Your Native Language:</label>
+            <select id="languageSelect" name="language" style="width: 100%;" required>
+                <option value="" disabled selected>Select language</option>
+                <!-- Languages will be populated here from languages.txt -->
+            </select>
+            <br><br>
+
+            <!-- City input -->
+            <label for="cityInput">Enter City:</label>
+            <input type="text" id="cityInput" name="city" placeholder="Enter city name" required>
+            <br><br>
+
+            <!-- Category selection dropdown -->
+            <label for="categorySelect">Select Category:</label>
+            <select id="categorySelect" name="category" style="width: 100%;" required>
+                <option value="" disabled selected>Select a category</option>
+            </select>
+            <br><br>
+
+            <input id="languageCityCategoryForm" type="submit" value="Submit">
+        </form>
+
+        <br>
+        <div id="resultTableContainer"></div>
+        <div id="downloadButtonContainer" style="display: none;">
+            <button id="downloadPdfButton">Download PDF</button>
+        </div>
+    </div>
+
+    <!-- Include jQuery and Select2 JS from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+    <!-- Include external JS file -->
+    <!-- <script src="scripts/main.js"></script> -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>
