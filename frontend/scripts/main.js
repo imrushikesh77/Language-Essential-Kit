@@ -78,9 +78,9 @@ function populateLanguages() {
 }
 
 function showDownloadButton() {
-  document.getElementById('downloadButtonContainer').style.display = 'block';
   const submitButton = document.querySelector('input[type="submit"]');
   submitButton.style.cursor = 'pointer';
+  document.getElementById('downloadButtonContainer').style.display = 'block';
 }
 
 function hideDownloadButton() {
