@@ -122,7 +122,7 @@ function fetchTableData(city, language, category) {
   // Hide the download button
   hideDownloadButton();
 
-  const apiUrl = `http://localhost:3000/get-result`;
+  const apiUrl = `https://language-essential-kit.onrender.com/get-result`;
 
   fetch(apiUrl, {
     method: 'POST',
