@@ -80,6 +80,8 @@ function populateLanguages() {
 // Function to show/hide the download button
 function showDownloadButton() {
   document.getElementById('downloadButtonContainer').style.display = 'block';
+  const submitButton = document.querySelector('input[type="submit"]');
+  submitButton.style.cursor = 'wait';
 }
 
 function hideDownloadButton() {
