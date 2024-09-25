@@ -3,57 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language Essential Kit</title>
+    <title>TravelLingo - Essential Language Kit for Travelers</title>
     <link rel="shortcut icon" href="./assets/travel.png" type="image/x-icon">
-    <!-- Include Select2 CSS from CDN -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="styles/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/index.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Enter following details for your language essential kit!!</h2>
+    <header id="header">
+        <nav class="container">
+            <a href="#" class="logo">TravelLingo</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- Form to select language, enter city, and choose category -->
-        <form id="languageCityCategoryForm">
-            <!-- Language selection dropdown -->
-            <label for="languageSelect">Select Your Native Language:</label>
-            <select id="languageSelect" name="language" style="width: 100%;" required>
-                <option value="" disabled selected>Select language</option>
-                <!-- Languages will be populated here from languages.txt -->
-            </select>
-            <br><br>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Master Essential Phrases for Your Travels</h1>
+                    <p>Learn key expressions in multiple languages and travel with confidence</p>
+                    <a href="./main.html" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </section>
 
-            <!-- City input -->
-            <label for="cityInput">Enter City:</label>
-            <input type="text" id="cityInput" name="city" placeholder="Enter city name" required>
-            <br><br>
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Why Choose TravelLingo?</h2>
+                <div class="feature-grid">
+                    <div class="feature">
+                        <h3>Multiple Languages</h3>
+                        <p>Access essential phrases in various languages for your global adventures</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Audio Pronunciation</h3>
+                        <p>Listen to native speakers and perfect your accent</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Offline Access</h3>
+                        <p>Use the app without an internet connection while you're on the go</p>
+                    </div>
+                    <div class="feature">
+                        <h3>Cultural Tips</h3>
+                        <p>Learn about local customs and etiquette to enhance your travel experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <!-- Category selection dropdown -->
-            <label for="categorySelect">Select Category:</label>
-            <select id="categorySelect" name="category" style="width: 100%;" required>
-                <option value="" disabled selected>Select a category</option>
-            </select>
-            <br><br>
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About TravelLingo</h2>
+                <div class="about-content">
+                    <p>
+                        TravelLingo was born out of a passion for travel and language. We understand the challenges travelers face when visiting countries where they don't speak the language. Our mission is to bridge this gap and make travel more accessible and enjoyable for everyone.
+                    </p>
+                    <p>
+                        Our team of language experts and seasoned travelers have curated essential phrases and cultural insights to help you navigate any situation with confidence. Whether you're ordering food, asking for directions, or making new friends, TravelLingo has got you covered.
+                    </p>
+                    <p>
+                        Join thousands of satisfied travelers who have used TravelLingo to enhance their journeys and create unforgettable memories around the world.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <input id="languageCityCategoryForm" type="submit" value="Submit">
-        </form>
-
-        <br>
-        <div id="resultTableContainer"></div>
-        <div id="downloadButtonContainer" style="display: none;">
-            <button id="downloadPdfButton">Download PDF</button>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 TravelLingo. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
 
-    <!-- Include jQuery and Select2 JS from CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
+        // Add a scroll event listener to change header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('#header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(41, 128, 185, 0.9)';
+            } else {
+                header.style.backgroundColor = 'rgba(52, 152, 219, 0.9)';
+            }
+        });
 
-    <!-- Include external JS file -->
-    <!-- <script src="scripts/main.js"></script> -->
-    <script src="scripts/main.js"></script>
+        // Add animation to features on scroll
+        const features = document.querySelectorAll('.feature');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        features.forEach(feature => {
+            feature.style.opacity = 0;
+            feature.style.transform = 'translateY(20px)';
+            feature.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+            observer.observe(feature);
+        });
+    </script>
 </body>
 </html>

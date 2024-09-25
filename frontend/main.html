@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Essential Kit</title>
+    <link rel="shortcut icon" href="./assets/travel.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container fade-in">
+        <h2>Create Your Language Essential Kit</h2>
+
+        <form id="languageCityCategoryForm">
+            <label for="languageSelect">Select Your Native Language:</label>
+            <select id="languageSelect" name="language" required>
+                <option value="" disabled selected>Select language</option>
+            </select>
+
+            <label for="cityInput">Enter City You Want to Travel:</label>
+            <input type="text" id="cityInput" name="city" placeholder="Enter city name" required>
+
+            <label for="categorySelect">Select Category:</label>
+            <select id="categorySelect" name="category" required>
+                <option value="" disabled selected>Select a category</option>
+            </select>
+
+            <input type="submit" value="Generate Kit">
+        </form>
+
+        <div id="resultTableContainer"></div>
+        <div id="downloadButtonContainer" style="display: none;">
+            <button id="downloadPdfButton">Download PDF</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

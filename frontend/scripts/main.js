@@ -19,12 +19,6 @@ function populateCategories() {
         option.textContent = category;
         categorySelect.appendChild(option);
       });
-
-      // Initialize Select2 after options are populated
-      $("#categorySelect").select2({
-        placeholder: "Select a category",
-        allowClear: true,
-      });
     })
     .catch((error) => console.error("Error fetching categories:", error));
 }
@@ -65,13 +59,6 @@ function populateLanguages() {
         option.value = language;
         option.textContent = language;
         languageSelect.appendChild(option);
-      });
-
-      // Initialize Select2 after options are populated
-      $("#languageSelect").select2({
-        placeholder: "Select a language",
-        allowClear: true,
-        matcher: customMatcher, // Use the custom matcher for more relevant search
       });
     })
     .catch((error) => console.error("Error fetching languages:", error));
