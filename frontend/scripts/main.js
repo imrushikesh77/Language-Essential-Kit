@@ -66,7 +66,7 @@ function populateLanguages() {
 
 function showDownloadButton() {
   const submitButton = document.querySelector('input[type="submit"]');
-  submitButton.style.cursor = 'pointer';
+  submitButton.style.cursor = 'default';
   document.getElementById('downloadButtonContainer').style.display = 'block';
 }
 
@@ -147,7 +147,9 @@ function fetchTableData(city, language, category) {
   })
   .catch(error => {
     console.error("Error fetching table data:", error);
+    const submitButton = document.querySelector('input[type="submit"]');
     alert("Error fetching data from server.");
+    submitButton.style.cursor = 'default';
   });
 }
 
