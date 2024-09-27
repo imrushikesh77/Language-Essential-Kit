@@ -69,6 +69,30 @@ input[type="submit"]:hover, #downloadPdfButton:hover {
     background-color: #2980b9;
 }
 
+.suggestionBox{
+    border: 1px solid #DEE1E3;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 40vh;
+    z-index: -20;
+}
+
+.notVisible{
+    display: none;
+}
+
+.suggestionList{
+    list-style-type: none;
+}
+
+.suggestionList li{
+    border-bottom: 1px solid #DEE1E3;
+}
+
+.suggestionList li:hover{
+    cursor: pointer;
+}
+
 #resultTableContainer {
     margin-top: 30px;
 }

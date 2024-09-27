@@ -51,7 +51,7 @@ function populateLanguages() {
 
       // Sort languages alphabetically
       languages.sort();
-
+      
       const languageSelect = document.getElementById("languageSelect");
 
       languages.forEach((language) => {
@@ -98,10 +98,6 @@ function downloadPdf() {
     pdf.save('language_essentials.pdf');
   });
 }
-
-
-
-
 
 // Function to fetch table data from the API
 function fetchTableData(city, language, category) {
@@ -210,18 +206,80 @@ function populateTable(data) {
   showDownloadButton();
 }
 
-
 // Function to handle form submission
 function handleFormSubmit(event) {
   event.preventDefault(); // Prevent form from reloading the page
   const submitButton = document.querySelector('input[type="submit"]');
-  submitButton.style.cursor = 'wait';
-  const city = document.getElementById("cityInput").value;
+  const city = document.getElementById("addressBar").value;
   const language = document.getElementById("languageSelect").value;
   const category = document.getElementById("categorySelect").value;
   // Fetch and display table data
+  submitButton.style.cursor = 'wait';
   fetchTableData(city, language, category);
 }
+
+function addClickEventToLi(){
+  const suggestionItems = document.querySelectorAll("#suggestionList li");
+  suggestionItems.forEach(item => {
+    item.addEventListener("click",()=>{
+      const selectedText = item.innerText;
+      const inputField = document.querySelector("#addressBar");
+      inputField.value = selectedText
+      document.querySelector("#suggestionBox").classList.add("notVisible");
+    })
+  })
+}
+
+function updateAddressList(addresses){
+  let ul = document.getElementById("suggestionList");
+  let suggestionBox = document.getElementById("suggestionBox");
+  suggestionBox.classList.remove("notVisible")
+  ul.innerHTML = '';
+  addresses.forEach(address => {
+    const liElt = document.createElement("li");
+    liElt.innerText = address.address_line1  + ", " + address.address_line2;
+    ul.appendChild(liElt);
+  })
+  addClickEventToLi();
+}
+
+function fetchAddress(input) {
+  const url = `http://localhost:3000/get-addresses?query=${encodeURIComponent(input)}`;
+  let addresses = [];
+  fetch(url)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error("Network response was not ok");
+          }
+          return response.json();
+      })
+      .then(data => {
+          // console.log(data);
+          addresses = addresses.concat(data);
+          updateAddressList(addresses);
+      })
+      .catch(error => {
+          console.error("Error fetching addresses:", error);
+      });
+}
+
+function debounce(func, delay) {
+  let timeout=null
+  return (input) => {
+      if(timeout) clearTimeout(timeout)
+
+      timeout=setTimeout(() => {
+          func(input)
+      }, delay)
+  }
+}
+
+const debounceFun = debounce(fetchAddress,500);
+
+const addressBar = document.querySelector("#addressBar");
+addressBar.addEventListener("input",(e)=>{
+  debounceFun(e.target.value);
+})
 
 // Call the functions to populate languages and categories on page load
 document.addEventListener("DOMContentLoaded", () => {

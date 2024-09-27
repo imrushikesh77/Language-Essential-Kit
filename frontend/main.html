@@ -16,10 +16,14 @@
             <select id="languageSelect" name="language" required>
                 <option value="" disabled selected>Select language</option>
             </select>
-
-            <label for="cityInput">Enter City You Want to Travel:</label>
-            <input type="text" id="cityInput" name="city" placeholder="Enter city name" required>
-
+            <div>
+                <label for="cityInput">Enter City You Want to Travel:</label>
+                <input id="addressBar" type="text" name="city" placeholder="Enter city name" required>
+                <div id="suggestionBox" class="suggestionBox notVisible">
+                    <ul class="suggestionList" id="suggestionList">
+                    </ul>
+                </div>
+            </div>
             <label for="categorySelect">Select Category:</label>
             <select id="categorySelect" name="category" required>
                 <option value="" disabled selected>Select a category</option>

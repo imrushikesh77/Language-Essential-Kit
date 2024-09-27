@@ -1,4 +1,10 @@
 import {aiChat} from "../utils/chatGemini.js"
+import dotenv from "dotenv"
+dotenv.config();
+
+
+const MAP_KEY = process.env.MAP_KEY
+const MAP_API = process.env.MAP_API
 
 const aiChatController = async (req, res) => {
     try {
@@ -16,4 +22,24 @@ const aiChatController = async (req, res) => {
     }
 }
 
-export { aiChatController };
+const getAddress = async(req,res) => {
+    const query = req.query.query;
+
+    let requestOptions = {
+        method: 'GET',
+      };
+
+    try {
+        fetch(`${MAP_API}?text=${query}&apiKey=${MAP_KEY}&format=json&type=city`, requestOptions)
+        .then(response => response.json())
+        .then(data => {
+            res.status(200).json(data.results);
+        })
+        .catch(error => console.log('error', error));
+    } catch (error) {
+        console.error(error);
+        res.status(500).json("Error");
+    }
+}
+
+export { aiChatController, getAddress };

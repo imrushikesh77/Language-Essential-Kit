@@ -10,9 +10,9 @@ const aiChat = async (city,nativeLanguage, category) => {
         safetySettings: aiConfig.gemeni.safetySettings,
     });
 
-    const prompt = `Fetch language essentials of ${category} so that user can communicate easily about that topic for the following inputs:
+    const prompt = `Fetch atleast 20 phrases which are language essentials of ${category} so that user can communicate easily about that topic for the following inputs:
                 1) Location: ${city} (The location where the user is traveling)
-                2) Native language: ${nativeLanguage} (The user's language)
+                2) Native language: ${nativeLanguage} (The user's language(mother-toungue))
                 3) Target language: {targetLanguage} (The language spoken at the location, use English if the user's language is the same as the location's language)
 
                 Please provide a **well-formatted** JSON output with the following structure:
