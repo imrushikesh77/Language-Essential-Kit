@@ -246,7 +246,7 @@ function updateAddressList(addresses){
 }
 
 function fetchAddress(input) {
-  const url = `https://language-essential-kit.onrender.com/get-result/get-addresses?query=${encodeURIComponent(input)}`;
+  const url = `https://language-essential-kit.onrender.com/get-addresses?query=${encodeURIComponent(input)}`;
   let addresses = [];
   fetch(url)
       .then(response => {
