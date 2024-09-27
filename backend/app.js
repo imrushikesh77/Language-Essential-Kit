@@ -7,7 +7,7 @@ app.use(cors({
     origin: [
         'http://127.0.0.1:5500',
         'http://127.0.0.1:5500/frontend/main.html', 
-        'https://imrushikesh77.github.io/Language-Essential-Kit',
+        'https://imrushikesh77.github.io',
         'https://imrushikesh77.github.io/Language-Essential-Kit/main.html'
     ]
 }));  
