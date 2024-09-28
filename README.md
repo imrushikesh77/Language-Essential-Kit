@@ -8,6 +8,7 @@ This project is a **Language Essential Kit** designed to assist travelers in lea
 - **Destination-Based Phrases**: Enter the place you are traveling to, and the app will suggest essential phrases in that location's language.
 - **Phrase Categories**: Choose categories of phrases (e.g., greetings, directions, shopping, etc.) and get at least 20 relevant essential phrases for each category.
 - **Autocomplete for Places**: Backend-powered autocomplete suggestions when entering a place, using the Geoapify API.
+- **Text to Speech Feature**: Added text to speech feature so that user can try pronouncing local phrases.
 
 ## Project Structure
 
