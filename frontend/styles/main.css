@@ -114,6 +114,15 @@ th {
     font-weight: 600;
 }
 
+.speaker-icon {
+    margin-left: 10px;
+    color: #007BFF; /* Optional: change color */
+  }
+  .speaker-icon:hover {
+    color: #0056b3; /* Optional: hover effect */
+  }
+  
+
 #downloadButtonContainer {
     margin-top: 20px;
     text-align: center;

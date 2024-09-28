@@ -184,17 +184,34 @@ function populateTable(data) {
   // Add rows from data
   data.forEach((item) => {
     const row = document.createElement("tr");
-    const values = [
-      item["local language"],
-      item["local lang in english"],
-      item["native language"],
-    ];
 
-    values.forEach((value) => {
-      const td = document.createElement("td");
-      td.textContent = value;
-      row.appendChild(td);
+    // Local Language with speaker icon
+    const localLangCell = document.createElement("td");
+    localLangCell.textContent = item["local language"];
+
+    // Create a speaker icon and append it to the local language cell
+    const speakerIcon = document.createElement("span");
+    speakerIcon.className = "speaker-icon";
+    speakerIcon.style.cursor = "pointer";  // To make it look clickable
+    speakerIcon.innerHTML = "🔊";  // Speaker icon, you can also use an <i> tag with a FontAwesome icon if preferred
+    
+    // Add click event to the speaker icon to trigger text-to-speech
+    speakerIcon.addEventListener("click", () => {
+      speakText(item["local language"]);  // Call the text-to-speech function
     });
+
+    localLangCell.appendChild(speakerIcon);
+    row.appendChild(localLangCell);
+
+    // Local Language in English
+    const localLangEngCell = document.createElement("td");
+    localLangEngCell.textContent = item["local lang in english"];
+    row.appendChild(localLangEngCell);
+
+    // Native Language
+    const nativeLangCell = document.createElement("td");
+    nativeLangCell.textContent = item["native language"];
+    row.appendChild(nativeLangCell);
 
     tbody.appendChild(row);
   });
@@ -207,6 +224,19 @@ function populateTable(data) {
   // Show the download button
   showDownloadButton();
 }
+
+// Function to handle text-to-speech
+function speakText(text) {
+  if ('speechSynthesis' in window) {
+    const msg = new SpeechSynthesisUtterance();
+    msg.text = text;
+    msg.lang = 'auto'; // You can specify a language if needed
+    window.speechSynthesis.speak(msg);
+  } else {
+    alert('Sorry, your browser does not support text-to-speech.');
+  }
+}
+
 
 // Function to handle form submission
 function handleFormSubmit(event) {

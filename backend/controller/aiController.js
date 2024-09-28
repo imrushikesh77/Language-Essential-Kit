@@ -2,7 +2,6 @@ import {aiChat} from "../utils/chatGemini.js"
 import dotenv from "dotenv"
 dotenv.config();
 
-
 const MAP_KEY = process.env.MAP_KEY
 const MAP_API = process.env.MAP_API
 
